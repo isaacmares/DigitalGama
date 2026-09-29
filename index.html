@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DigitalGama — Software, Cloud & Infrastructure</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        DigitalGama — Software, Cloud & Infrastructure
+    </title>
+
     <meta
         name="description"
         content="Desarrollo de software, infraestructura cloud, hosting, redes y soluciones digitales para empresas."
     >
 
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración propia -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gama: {
+                            navy: "#061A3A",
+                            navy2: "#0A2854",
+                            blue: "#087CFF",
+                            blue2: "#1D91FF",
+                            cyan: "#28B8FF",
+                            soft: "#F5F8FC",
+                            border: "#E5EBF3",
+                            muted: "#64748B"
+                        }
+                    },
+
+                    boxShadow: {
+                        soft:
+                            "0 20px 60px rgba(6, 26, 58, 0.08)",
+
+                        blue:
+                            "0 16px 45px rgba(8, 124, 255, 0.25)"
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --navy: #061a3a;
-            --navy-2: #0a2854;
-            --blue: #087cff;
-            --blue-2: #1d91ff;
-            --cyan: #28b8ff;
-
-            --text: #0a1730;
-            --muted: #64748b;
-
-            --white: #ffffff;
-            --soft: #f5f8fc;
-            --border: #e5ebf3;
-
-            --radius: 24px;
-            --shadow: 0 20px 60px rgba(6, 26, 58, .08);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family:
                 Inter,
@@ -48,1020 +60,460 @@
                 BlinkMacSystemFont,
                 "Segoe UI",
                 sans-serif;
-
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .container {
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-        }
-
-        /* -------------------------
-           NAVBAR
-        ------------------------- */
-
-        .navbar {
-            position: fixed;
-            z-index: 100;
-            top: 0;
-            left: 0;
-            right: 0;
-
-            background: rgba(255,255,255,.86);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(229,235,243,.75);
-        }
-
-        .navbar-content {
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .brand span:first-of-type {
-            color: var(--navy);
-        }
-
-        .brand .gama {
-            color: var(--blue);
-        }
-
-        .brand-icon {
-            width: 38px;
-            height: 38px;
-            position: relative;
-            border-radius: 12px;
-            background: linear-gradient(
-                135deg,
-                var(--navy) 0%,
-                var(--blue) 100%
-            );
-            display: grid;
-            place-items: center;
-            color: white;
-            font-weight: 900;
-            font-size: 14px;
-            letter-spacing: -2px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            color: #526174;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .nav-links a {
-            transition: .2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--blue);
-        }
-
-        .nav-button {
-            padding: 11px 19px;
-            border-radius: 12px;
-            background: var(--navy);
-            color: white !important;
-        }
-
-        .nav-button:hover {
-            background: var(--blue);
-        }
-
-        /* -------------------------
-           HERO
-        ------------------------- */
-
-        .hero {
-            min-height: 860px;
-            padding: 180px 0 110px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 620px;
-            height: 620px;
-            border-radius: 50%;
-            right: -180px;
-            top: 60px;
-
-            background: radial-gradient(
-                circle,
-                rgba(8,124,255,.15),
-                rgba(8,124,255,0) 68%
-            );
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            left: -180px;
-            bottom: 0;
-
-            background: radial-gradient(
-                circle,
-                rgba(40,184,255,.12),
-                rgba(40,184,255,0) 70%
-            );
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            align-items: center;
-            gap: 80px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-
-            padding: 8px 13px;
-            border: 1px solid #dce8f8;
-            background: #f7fbff;
-
-            border-radius: 100px;
-
-            color: var(--blue);
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .eyebrow-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--blue);
-            box-shadow: 0 0 0 5px rgba(8,124,255,.1);
-        }
-
-        .hero h1 {
-            max-width: 720px;
-            font-size: clamp(48px, 6vw, 78px);
-            line-height: .98;
-            letter-spacing: -4px;
-            font-weight: 800;
-            color: var(--navy);
-        }
-
-        .hero h1 .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #087cff,
-                #19a8ff
-            );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-description {
-            max-width: 610px;
-            margin-top: 28px;
-            font-size: 18px;
-            color: var(--muted);
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 36px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 50px;
-            padding: 0 22px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            transition: .25s ease;
-        }
-
-        .button-primary {
-            color: white;
-            background: linear-gradient(
-                135deg,
-                var(--navy),
-                var(--blue)
-            );
-
-            box-shadow: 0 12px 35px rgba(8,124,255,.18);
-        }
-
-        .button-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 45px rgba(8,124,255,.25);
-        }
-
-        .button-secondary {
-            border: 1px solid var(--border);
-            color: var(--navy);
-            background: white;
-        }
-
-        .button-secondary:hover {
-            border-color: #b9cae1;
-            background: var(--soft);
-        }
-
-        /* -------------------------
-           HERO VISUAL
-        ------------------------- */
-
-        .hero-visual {
-            height: 520px;
-            position: relative;
-            display: grid;
-            place-items: center;
-        }
-
-        .visual-circle {
-            width: 410px;
-            height: 410px;
-
-            position: relative;
-
-            border-radius: 50%;
-            border: 1px solid rgba(8,124,255,.12);
-
-            background:
-                radial-gradient(
-                    circle at 40% 35%,
-                    #ffffff 0%,
-                    #f4f9ff 48%,
-                    #ecf5ff 100%
-                );
-
-            box-shadow:
-                0 40px 100px rgba(6, 26, 58, .09),
-                inset 0 0 0 18px rgba(255,255,255,.4);
-        }
-
-        .visual-circle::before,
-        .visual-circle::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(8,124,255,.12);
-        }
-
-        .visual-circle::before {
-            inset: -38px;
-        }
-
-        .visual-circle::after {
-            inset: 55px;
-        }
-
-        .dg-symbol {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-
-            font-size: 140px;
-            font-weight: 900;
-            letter-spacing: -25px;
-        }
-
-        .dg-symbol .d {
-            color: var(--navy);
-        }
-
-        .dg-symbol .g {
-            color: var(--blue);
-            margin-left: -20px;
-        }
-
-        .orbit-dot {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--blue);
-            right: 15px;
-            top: 180px;
-
-            box-shadow:
-                0 0 0 10px rgba(8,124,255,.08),
-                0 0 35px rgba(8,124,255,.35);
-        }
-
-        .mini-card {
-            position: absolute;
-
-            padding: 15px 18px;
-            background: rgba(255,255,255,.95);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-
-            box-shadow: var(--shadow);
-
-            color: var(--navy);
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .mini-card span {
-            color: var(--blue);
-        }
-
-        .card-1 {
-            top: 70px;
-            left: -20px;
-        }
-
-        .card-2 {
-            right: -15px;
-            bottom: 90px;
-        }
-
-        /* -------------------------
-           CLIENT / PRODUCT BAR
-        ------------------------- */
-
-        .product-strip {
-            padding: 26px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .product-strip-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .strip-label {
-            color: #94a3b8;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .strip-products {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-
-            color: #536479;
-            font-weight: 800;
-        }
-
-        .strip-products strong {
-            color: var(--navy);
-        }
-
-        .strip-products .highlight {
-            color: var(--blue);
-        }
-
-        /* -------------------------
-           SECTIONS
-        ------------------------- */
-
-        section {
-            padding: 110px 0;
-        }
-
-        .section-header {
-            max-width: 680px;
-            margin-bottom: 55px;
-        }
-
-        .section-label {
-            color: var(--blue);
-            font-size: 13px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.6px;
-            margin-bottom: 12px;
-        }
-
-        .section-header h2 {
-            color: var(--navy);
-            font-size: clamp(36px, 4vw, 52px);
-            letter-spacing: -2.4px;
-            line-height: 1.05;
-        }
-
-        .section-header p {
-            margin-top: 18px;
-            color: var(--muted);
-            font-size: 17px;
-        }
-
-        /* -------------------------
-           SERVICES
-        ------------------------- */
-
-        .services {
-            background: var(--soft);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .service-card {
-            min-height: 280px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 34px;
-
-            position: relative;
-            overflow: hidden;
-
-            transition: .3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #cddbf0;
-            box-shadow: var(--shadow);
-        }
-
-        .service-icon {
-            width: 46px;
-            height: 46px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 14px;
-
-            color: white;
-            background: linear-gradient(
-                135deg,
-                var(--navy),
-                var(--blue)
-            );
-
-            font-size: 20px;
-            margin-bottom: 34px;
-        }
-
-        .service-card h3 {
-            font-size: 23px;
-            color: var(--navy);
-            margin-bottom: 10px;
-            letter-spacing: -.8px;
-        }
-
-        .service-card p {
-            max-width: 480px;
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        .card-number {
-            position: absolute;
-            right: 25px;
-            top: 22px;
-
-            color: #dfe8f3;
-            font-weight: 800;
-            font-size: 14px;
-        }
-
-        /* -------------------------
-           PRODUCTS
-        ------------------------- */
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-
-        .product-card {
-            border-radius: 28px;
-            padding: 40px;
-            min-height: 400px;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card.dark {
-            background:
-                linear-gradient(
-                    145deg,
-                    #061a3a,
-                    #082b5f
-                );
-
-            color: white;
-        }
-
-        .product-card.blue {
-            background:
-                linear-gradient(
-                    145deg,
-                    #087cff,
-                    #21b4ff
-                );
-
-            color: white;
-        }
-
-        .product-pill {
-            display: inline-block;
-            padding: 7px 11px;
-
-            border-radius: 100px;
-            border: 1px solid rgba(255,255,255,.22);
-
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .product-card h3 {
-            margin-top: 80px;
-            font-size: 40px;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        .product-card p {
-            margin-top: 17px;
-            max-width: 440px;
-            color: rgba(255,255,255,.75);
-        }
-
-        .product-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            margin-top: 30px;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .product-circle {
-            position: absolute;
-
-            width: 250px;
-            height: 250px;
-
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.12);
-
-            right: -100px;
-            top: -100px;
-        }
-
-        /* -------------------------
-           ABOUT
-        ------------------------- */
-
-        .about-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 90px;
-            align-items: center;
-        }
-
-        .about-box {
-            min-height: 480px;
-            border-radius: 30px;
-            background:
-                linear-gradient(
-                    145deg,
-                    var(--navy),
-                    #0c3873
-                );
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-box::before {
-            content: "";
-
-            position: absolute;
-            width: 310px;
-            height: 310px;
-            border-radius: 50%;
-
-            border: 1px solid rgba(255,255,255,.12);
-
-            top: 80px;
-            left: 80px;
-        }
-
-        .about-box::after {
-            content: "";
-
-            position: absolute;
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-
-            background: var(--blue);
-
-            bottom: -70px;
-            right: -20px;
-
-            box-shadow: 0 0 100px rgba(8,124,255,.6);
-        }
-
-        .about-mark {
-            position: absolute;
-            inset: 0;
-
-            display: grid;
-            place-items: center;
-
-            color: white;
-
-            font-size: 80px;
-            font-weight: 900;
-            letter-spacing: -12px;
-        }
-
-        .about-content h2 {
-            font-size: 48px;
-            line-height: 1.05;
-            letter-spacing: -2.2px;
-            color: var(--navy);
-        }
-
-        .about-content p {
-            margin-top: 22px;
-            color: var(--muted);
-            font-size: 17px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 34px;
-        }
-
-        .stat {
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-        }
-
-        .stat strong {
-            display: block;
-            color: var(--navy);
-            font-size: 25px;
-        }
-
-        .stat span {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* -------------------------
-           CTA
-        ------------------------- */
-
-        .cta-section {
-            padding-top: 40px;
-        }
-
-        .cta {
-            min-height: 380px;
-            border-radius: 32px;
-            padding: 60px;
-
-            color: white;
-
-            background:
-                radial-gradient(
-                    circle at 85% 50%,
-                    rgba(40,184,255,.35),
-                    transparent 32%
-                ),
-                linear-gradient(
-                    135deg,
-                    #04142f,
-                    #07295a
-                );
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: "";
-            position: absolute;
-
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-
-            border: 1px solid rgba(255,255,255,.08);
-
-            right: -100px;
-            top: -150px;
-        }
-
-        .cta-content {
-            max-width: 680px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta h2 {
-            font-size: clamp(38px, 5vw, 60px);
-            line-height: 1;
-            letter-spacing: -3px;
-        }
-
-        .cta p {
-            color: rgba(255,255,255,.68);
-            margin-top: 20px;
-            font-size: 17px;
-        }
-
-        .cta .button {
-            margin-top: 30px;
-            background: white;
-            color: var(--navy);
-        }
-
-        /* -------------------------
-           FOOTER
-        ------------------------- */
-
-        footer {
-            padding: 60px 0 35px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-            padding-bottom: 45px;
-        }
-
-        .footer-description {
-            max-width: 400px;
-            color: var(--muted);
-            font-size: 14px;
-            margin-top: 15px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 50px;
-        }
-
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        .footer-column strong {
-            color: var(--navy);
-            margin-bottom: 5px;
-        }
-
-        .footer-bottom {
-            padding-top: 25px;
-            border-top: 1px solid var(--border);
-
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        /* -------------------------
-           RESPONSIVE
-        ------------------------- */
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 130px;
-                min-height: auto;
-            }
-
-            .hero-grid,
-            .about-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-grid {
-                gap: 45px;
-            }
-
-            .hero-visual {
-                height: 430px;
-            }
-
-            .visual-circle {
-                width: 320px;
-                height: 320px;
-            }
-
-            .services-grid,
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-layout {
-                gap: 45px;
-            }
-
-            .about-box {
-                min-height: 390px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: min(100% - 26px, 1180px);
-            }
-
-            .hero h1 {
-                letter-spacing: -2.5px;
-            }
-
-            .hero-description {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .service-card,
-            .product-card {
-                padding: 26px;
-            }
-
-            .product-card {
-                min-height: 340px;
-            }
-
-            .product-card h3 {
-                margin-top: 60px;
-                font-size: 34px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .cta {
-                padding: 38px 25px;
-            }
-
-            .footer-top,
-            .footer-bottom {
-                flex-direction: column;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-            }
-
-            .card-1 {
-                left: 0;
-            }
-
-            .card-2 {
-                right: 0;
-            }
         }
     </style>
 </head>
 
-<body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-    <div class="container navbar-content">
+<body
+    class="
+        overflow-x-hidden
+        bg-white
+        text-gama-navy
+        antialiased
+    "
+>
 
-        <a href="#" class="brand">
-            <div class="brand-icon">
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav
+    class="
+        fixed
+        inset-x-0
+        top-0
+        z-50
+        border-b
+        border-gama-border/80
+        bg-white/85
+        backdrop-blur-xl
+    "
+>
+
+    <div
+        class="
+            mx-auto
+            flex
+            h-[76px]
+            max-w-7xl
+            items-center
+            justify-between
+            px-5
+            sm:px-6
+            lg:px-8
+        "
+    >
+
+        <!-- Marca -->
+        <a
+            href="#"
+            class="
+                flex
+                items-center
+                gap-3
+            "
+        >
+
+            <!-- Isotipo temporal -->
+            <div
+                class="
+                    grid
+                    h-10
+                    w-10
+                    place-items-center
+                    rounded-xl
+                    bg-gradient-to-br
+                    from-gama-navy
+                    to-gama-blue
+                    text-xs
+                    font-black
+                    tracking-[-2px]
+                    text-white
+                "
+            >
                 DG
             </div>
 
-            <div>
-                <span>Digital</span><span class="gama">Gama</span>
+            <div
+                class="
+                    text-[22px]
+                    font-extrabold
+                    tracking-[-1px]
+                "
+            >
+                <span class="text-gama-navy">
+                    Digital
+                </span>
+
+                <span class="text-gama-blue">
+                    Gama
+                </span>
             </div>
+
         </a>
 
-        <div class="nav-links">
-            <a href="#servicios">Servicios</a>
-            <a href="#productos">Productos</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto" class="nav-button">
+
+        <!-- Links desktop -->
+        <div
+            class="
+                hidden
+                items-center
+                gap-8
+                text-sm
+                font-semibold
+                text-slate-600
+                md:flex
+            "
+        >
+
+            <a
+                href="#servicios"
+                class="
+                    transition
+                    hover:text-gama-blue
+                "
+            >
+                Servicios
+            </a>
+
+            <a
+                href="#productos"
+                class="
+                    transition
+                    hover:text-gama-blue
+                "
+            >
+                Productos
+            </a>
+
+            <a
+                href="#nosotros"
+                class="
+                    transition
+                    hover:text-gama-blue
+                "
+            >
+                Nosotros
+            </a>
+
+            <a
+                href="#contacto"
+                class="
+                    rounded-xl
+                    bg-gama-navy
+                    px-5
+                    py-3
+                    text-white
+                    transition
+                    hover:bg-gama-blue
+                "
+            >
                 Contactar
             </a>
+
+        </div>
+
+
+        <!-- Botón móvil -->
+        <button
+            id="menuButton"
+            class="
+                grid
+                h-10
+                w-10
+                place-items-center
+                rounded-xl
+                border
+                border-gama-border
+                md:hidden
+            "
+            aria-label="Abrir menú"
+        >
+            <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M4 6h16"/>
+                <path d="M4 12h16"/>
+                <path d="M4 18h16"/>
+            </svg>
+        </button>
+
+    </div>
+
+
+    <!-- Menú móvil -->
+    <div
+        id="mobileMenu"
+        class="
+            hidden
+            border-t
+            border-gama-border
+            bg-white
+            px-5
+            py-5
+            md:hidden
+        "
+    >
+
+        <div
+            class="
+                flex
+                flex-col
+                gap-5
+                text-sm
+                font-semibold
+                text-slate-600
+            "
+        >
+
+            <a href="#servicios">
+                Servicios
+            </a>
+
+            <a href="#productos">
+                Productos
+            </a>
+
+            <a href="#nosotros">
+                Nosotros
+            </a>
+
+            <a
+                href="#contacto"
+                class="
+                    rounded-xl
+                    bg-gama-navy
+                    px-5
+                    py-3
+                    text-center
+                    text-white
+                "
+            >
+                Contactar
+            </a>
+
         </div>
 
     </div>
+
 </nav>
 
 
-<!-- HERO -->
-<header class="hero">
 
-    <div class="container hero-grid">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
+<header
+    class="
+        relative
+        overflow-hidden
+        pt-36
+        sm:pt-40
+        lg:min-h-[860px]
+        lg:pt-44
+    "
+>
+
+    <!-- Glow derecho -->
+    <div
+        class="
+            pointer-events-none
+            absolute
+            -right-56
+            top-20
+            h-[620px]
+            w-[620px]
+            rounded-full
+            bg-gama-blue/10
+            blur-3xl
+        "
+    ></div>
+
+
+    <!-- Glow izquierdo -->
+    <div
+        class="
+            pointer-events-none
+            absolute
+            -left-52
+            bottom-0
+            h-[420px]
+            w-[420px]
+            rounded-full
+            bg-gama-cyan/10
+            blur-3xl
+        "
+    ></div>
+
+
+    <div
+        class="
+            relative
+            z-10
+            mx-auto
+            grid
+            max-w-7xl
+            items-center
+            gap-14
+            px-5
+            pb-24
+            sm:px-6
+            lg:grid-cols-2
+            lg:gap-20
+            lg:px-8
+            lg:pb-28
+        "
+    >
+
+        <!-- Hero izquierda -->
         <div>
 
-            <div class="eyebrow">
-                <span class="eyebrow-dot"></span>
+            <div
+                class="
+                    mb-6
+                    inline-flex
+                    items-center
+                    gap-2.5
+                    rounded-full
+                    border
+                    border-blue-100
+                    bg-blue-50/60
+                    px-4
+                    py-2
+                    text-xs
+                    font-bold
+                    text-gama-blue
+                "
+            >
+
+                <span
+                    class="
+                        h-2
+                        w-2
+                        rounded-full
+                        bg-gama-blue
+                        shadow-[0_0_0_5px_rgba(8,124,255,.1)]
+                    "
+                ></span>
+
                 Digital solutions
+
             </div>
 
-            <h1>
+
+            <h1
+                class="
+                    max-w-3xl
+                    text-5xl
+                    font-extrabold
+                    leading-[0.98]
+                    tracking-[-3px]
+                    text-gama-navy
+                    sm:text-6xl
+                    lg:text-[78px]
+                    lg:tracking-[-4px]
+                "
+            >
                 Tecnología que
-                <span class="gradient-text">
+
+                <span
+                    class="
+                        bg-gradient-to-r
+                        from-gama-blue
+                        to-gama-cyan
+                        bg-clip-text
+                        text-transparent
+                    "
+                >
                     impulsa negocios.
                 </span>
             </h1>
 
-            <p class="hero-description">
-                Creamos software, infraestructura cloud y soluciones
-                tecnológicas diseñadas para hacer más simples,
-                conectadas y eficientes las operaciones de tu empresa.
+
+            <p
+                class="
+                    mt-7
+                    max-w-xl
+                    text-base
+                    leading-8
+                    text-gama-muted
+                    sm:text-lg
+                "
+            >
+                Creamos software, infraestructura cloud y
+                soluciones tecnológicas diseñadas para hacer
+                más simples, conectadas y eficientes las
+                operaciones de tu empresa.
             </p>
 
-            <div class="hero-actions">
 
-                <a href="#contacto" class="button button-primary">
-                    Iniciar un proyecto →
+            <div
+                class="
+                    mt-9
+                    flex
+                    flex-wrap
+                    gap-3
+                "
+            >
+
+                <a
+                    href="#contacto"
+                    class="
+                        inline-flex
+                        min-h-[50px]
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        bg-gradient-to-br
+                        from-gama-navy
+                        to-gama-blue
+                        px-6
+                        text-sm
+                        font-bold
+                        text-white
+                        shadow-lg
+                        shadow-blue-500/10
+                        transition
+                        duration-300
+                        hover:-translate-y-1
+                        hover:shadow-blue
+                    "
+                >
+                    Iniciar un proyecto
+
+                    <span class="ml-2">
+                        →
+                    </span>
                 </a>
 
-                <a href="#productos" class="button button-secondary">
+
+                <a
+                    href="#productos"
+                    class="
+                        inline-flex
+                        min-h-[50px]
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        border
+                        border-gama-border
+                        bg-white
+                        px-6
+                        text-sm
+                        font-bold
+                        text-gama-navy
+                        transition
+                        hover:bg-gama-soft
+                    "
+                >
                     Conocer productos
                 </a>
 
@@ -1070,27 +522,162 @@
         </div>
 
 
-        <div class="hero-visual">
 
-            <div class="visual-circle">
+        <!-- Hero derecha -->
+        <div
+            class="
+                relative
+                flex
+                min-h-[430px]
+                items-center
+                justify-center
+                lg:min-h-[520px]
+            "
+        >
 
-                <div class="dg-symbol">
-                    <span class="d">D</span>
-                    <span class="g">G</span>
+            <!-- Círculo -->
+            <div
+                class="
+                    relative
+                    flex
+                    h-[310px]
+                    w-[310px]
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-blue-100
+                    bg-gradient-to-br
+                    from-white
+                    to-blue-50
+                    shadow-soft
+                    sm:h-[390px]
+                    sm:w-[390px]
+                "
+            >
+
+                <!-- Órbita exterior -->
+                <div
+                    class="
+                        absolute
+                        -inset-8
+                        rounded-full
+                        border
+                        border-blue-100/70
+                    "
+                ></div>
+
+
+                <!-- Órbita interior -->
+                <div
+                    class="
+                        absolute
+                        inset-14
+                        rounded-full
+                        border
+                        border-blue-100
+                    "
+                ></div>
+
+
+                <!-- DG -->
+                <div
+                    class="
+                        relative
+                        z-10
+                        flex
+                        items-center
+                        text-[100px]
+                        font-black
+                        tracking-[-24px]
+                        sm:text-[135px]
+                    "
+                >
+
+                    <span class="text-gama-navy">
+                        D
+                    </span>
+
+                    <span
+                        class="
+                            -ml-4
+                            bg-gradient-to-br
+                            from-gama-blue
+                            to-gama-cyan
+                            bg-clip-text
+                            text-transparent
+                        "
+                    >
+                        G
+                    </span>
+
                 </div>
 
-                <span class="orbit-dot"></span>
+
+                <div
+                    class="
+                        absolute
+                        right-0
+                        top-[45%]
+                        h-4
+                        w-4
+                        rounded-full
+                        bg-gama-blue
+                        shadow-[0_0_0_10px_rgba(8,124,255,.08)]
+                    "
+                ></div>
 
             </div>
 
-            <div class="mini-card card-1">
+
+            <!-- Floating card -->
+            <div
+                class="
+                    absolute
+                    left-0
+                    top-10
+                    rounded-2xl
+                    border
+                    border-gama-border
+                    bg-white/95
+                    px-5
+                    py-4
+                    text-sm
+                    font-bold
+                    text-gama-navy
+                    shadow-soft
+                    sm:left-4
+                "
+            >
                 Software
-                <span>●</span>
+                <span class="text-gama-blue">
+                    ●
+                </span>
             </div>
 
-            <div class="mini-card card-2">
+
+            <div
+                class="
+                    absolute
+                    bottom-12
+                    right-0
+                    rounded-2xl
+                    border
+                    border-gama-border
+                    bg-white/95
+                    px-5
+                    py-4
+                    text-sm
+                    font-bold
+                    text-gama-navy
+                    shadow-soft
+                    sm:right-3
+                "
+            >
                 Cloud & Networks
-                <span>●</span>
+                <span class="text-gama-blue">
+                    ●
+                </span>
             </div>
 
         </div>
@@ -1100,133 +687,550 @@
 </header>
 
 
-<!-- PRODUCT STRIP -->
-<div class="product-strip">
 
-    <div class="container product-strip-inner">
+<!-- =========================================================
+     ECOSISTEMA
+========================================================= -->
 
-        <div class="strip-label">
+<section
+    class="
+        border-y
+        border-gama-border
+        py-7
+    "
+>
+
+    <div
+        class="
+            mx-auto
+            flex
+            max-w-7xl
+            flex-col
+            gap-5
+            px-5
+            sm:px-6
+            lg:flex-row
+            lg:items-center
+            lg:justify-between
+            lg:px-8
+        "
+    >
+
+        <span
+            class="
+                text-xs
+                font-bold
+                uppercase
+                tracking-[2px]
+                text-slate-400
+            "
+        >
             Ecosistema DigitalGama
-        </div>
+        </span>
 
-        <div class="strip-products">
-            <strong>Wisper<span class="highlight">Cloud</span></strong>
-            <strong>Z-nix</strong>
-            <span>Cloud</span>
-            <span>Networks</span>
-            <span>Software</span>
+
+        <div
+            class="
+                flex
+                flex-wrap
+                gap-x-8
+                gap-y-3
+                font-bold
+                text-slate-500
+            "
+        >
+
+            <span class="text-gama-navy">
+                Wisper<span class="text-gama-blue">Cloud</span>
+            </span>
+
+            <span class="text-gama-navy">
+                Z-nix
+            </span>
+
+            <span>
+                Cloud
+            </span>
+
+            <span>
+                Networks
+            </span>
+
+            <span>
+                Software
+            </span>
+
         </div>
 
     </div>
 
-</div>
+</section>
 
 
-<!-- SERVICES -->
-<section class="services" id="servicios">
 
-    <div class="container">
+<!-- =========================================================
+     SERVICIOS
+========================================================= -->
 
-        <div class="section-header">
+<section
+    id="servicios"
+    class="
+        bg-gama-soft
+        py-24
+        sm:py-28
+    "
+>
 
-            <div class="section-label">
+    <div
+        class="
+            mx-auto
+            max-w-7xl
+            px-5
+            sm:px-6
+            lg:px-8
+        "
+    >
+
+        <!-- Header -->
+        <div
+            class="
+                mb-14
+                max-w-2xl
+            "
+        >
+
+            <span
+                class="
+                    text-xs
+                    font-extrabold
+                    uppercase
+                    tracking-[2px]
+                    text-gama-blue
+                "
+            >
                 Servicios
-            </div>
+            </span>
 
-            <h2>
+            <h2
+                class="
+                    mt-3
+                    text-4xl
+                    font-extrabold
+                    leading-tight
+                    tracking-[-2px]
+                    text-gama-navy
+                    sm:text-5xl
+                "
+            >
                 Tecnología diseñada alrededor de tu negocio.
             </h2>
 
-            <p>
-                Desde una aplicación hasta la infraestructura que la mantiene
-                funcionando.
+            <p
+                class="
+                    mt-5
+                    text-base
+                    leading-7
+                    text-gama-muted
+                    sm:text-lg
+                "
+            >
+                Desde una aplicación hasta la infraestructura
+                que la mantiene funcionando.
             </p>
 
         </div>
 
 
-        <div class="services-grid">
+        <!-- Grid -->
+        <div
+            class="
+                grid
+                gap-5
+                md:grid-cols-2
+            "
+        >
 
-            <article class="service-card">
 
-                <div class="card-number">01</div>
+            <!-- Software -->
+            <article
+                class="
+                    group
+                    relative
+                    min-h-[280px]
+                    overflow-hidden
+                    rounded-3xl
+                    border
+                    border-gama-border
+                    bg-white
+                    p-8
+                    transition
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-soft
+                "
+            >
 
-                <div class="service-icon">
-                    &lt;/&gt;
+                <span
+                    class="
+                        absolute
+                        right-7
+                        top-6
+                        text-sm
+                        font-bold
+                        text-slate-200
+                    "
+                >
+                    01
+                </span>
+
+
+                <div
+                    class="
+                        mb-8
+                        grid
+                        h-12
+                        w-12
+                        place-items-center
+                        rounded-2xl
+                        bg-gradient-to-br
+                        from-gama-navy
+                        to-gama-blue
+                        text-white
+                    "
+                >
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="m8 9-3 3 3 3"/>
+                        <path d="m16 9 3 3-3 3"/>
+                        <path d="m14 5-4 14"/>
+                    </svg>
+
                 </div>
 
-                <h3>
+
+                <h3
+                    class="
+                        text-2xl
+                        font-bold
+                        tracking-tight
+                        text-gama-navy
+                    "
+                >
                     Desarrollo de software
                 </h3>
 
-                <p>
-                    Aplicaciones web, plataformas SaaS, APIs,
-                    sistemas administrativos y soluciones desarrolladas
-                    específicamente para cada negocio.
+
+                <p
+                    class="
+                        mt-3
+                        max-w-lg
+                        leading-7
+                        text-gama-muted
+                    "
+                >
+                    Aplicaciones web, plataformas SaaS,
+                    APIs, sistemas administrativos y
+                    soluciones desarrolladas específicamente
+                    para cada negocio.
                 </p>
 
             </article>
 
 
-            <article class="service-card">
 
-                <div class="card-number">02</div>
+            <!-- Cloud -->
+            <article
+                class="
+                    relative
+                    min-h-[280px]
+                    rounded-3xl
+                    border
+                    border-gama-border
+                    bg-white
+                    p-8
+                    transition
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-soft
+                "
+            >
 
-                <div class="service-icon">
-                    ☁
+                <span
+                    class="
+                        absolute
+                        right-7
+                        top-6
+                        text-sm
+                        font-bold
+                        text-slate-200
+                    "
+                >
+                    02
+                </span>
+
+
+                <div
+                    class="
+                        mb-8
+                        grid
+                        h-12
+                        w-12
+                        place-items-center
+                        rounded-2xl
+                        bg-gradient-to-br
+                        from-gama-navy
+                        to-gama-blue
+                        text-white
+                    "
+                >
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="
+                            M17.5 19H9
+                            a7 7 0 1 1 6.7-9
+                            H17
+                            a4 4 0 0 1 .5 8
+                            Z
+                            "
+                        />
+                    </svg>
+
                 </div>
 
-                <h3>
+
+                <h3
+                    class="
+                        text-2xl
+                        font-bold
+                        tracking-tight
+                    "
+                >
                     Cloud & Hosting
                 </h3>
 
-                <p>
-                    Hosting de páginas y aplicaciones, servidores,
-                    despliegues y administración de infraestructura.
+
+                <p
+                    class="
+                        mt-3
+                        max-w-lg
+                        leading-7
+                        text-gama-muted
+                    "
+                >
+                    Hosting de páginas y aplicaciones,
+                    servidores, despliegues, respaldo y
+                    administración de infraestructura.
                 </p>
 
             </article>
 
 
-            <article class="service-card">
 
-                <div class="card-number">03</div>
+            <!-- Networks -->
+            <article
+                class="
+                    relative
+                    min-h-[280px]
+                    rounded-3xl
+                    border
+                    border-gama-border
+                    bg-white
+                    p-8
+                    transition
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-soft
+                "
+            >
 
-                <div class="service-icon">
-                    ⇄
+                <span
+                    class="
+                        absolute
+                        right-7
+                        top-6
+                        text-sm
+                        font-bold
+                        text-slate-200
+                    "
+                >
+                    03
+                </span>
+
+
+                <div
+                    class="
+                        mb-8
+                        grid
+                        h-12
+                        w-12
+                        place-items-center
+                        rounded-2xl
+                        bg-gradient-to-br
+                        from-gama-navy
+                        to-gama-blue
+                        text-white
+                    "
+                >
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <circle cx="5" cy="12" r="2"/>
+                        <circle cx="19" cy="5" r="2"/>
+                        <circle cx="19" cy="19" r="2"/>
+
+                        <path d="M7 12h5"/>
+                        <path d="m14 11 3-4"/>
+                        <path d="m14 13 3 4"/>
+                    </svg>
+
                 </div>
 
-                <h3>
+
+                <h3
+                    class="
+                        text-2xl
+                        font-bold
+                        tracking-tight
+                    "
+                >
                     Redes & VPN
                 </h3>
 
-                <p>
+
+                <p
+                    class="
+                        mt-3
+                        max-w-lg
+                        leading-7
+                        text-gama-muted
+                    "
+                >
                     MikroTik, VPN, conexiones remotas,
-                    infraestructura de red y soluciones para empresas
-                    y proveedores de Internet.
+                    infraestructura de red y soluciones
+                    para empresas y proveedores de Internet.
                 </p>
 
             </article>
 
 
-            <article class="service-card">
 
-                <div class="card-number">04</div>
+            <!-- Automatización -->
+            <article
+                class="
+                    relative
+                    min-h-[280px]
+                    rounded-3xl
+                    border
+                    border-gama-border
+                    bg-white
+                    p-8
+                    transition
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-soft
+                "
+            >
 
-                <div class="service-icon">
-                    ⚡
+                <span
+                    class="
+                        absolute
+                        right-7
+                        top-6
+                        text-sm
+                        font-bold
+                        text-slate-200
+                    "
+                >
+                    04
+                </span>
+
+
+                <div
+                    class="
+                        mb-8
+                        grid
+                        h-12
+                        w-12
+                        place-items-center
+                        rounded-2xl
+                        bg-gradient-to-br
+                        from-gama-navy
+                        to-gama-blue
+                        text-white
+                    "
+                >
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="
+                            M13 2
+                            3 14
+                            h9
+                            l-1 8
+                            10-12
+                            h-9
+                            Z
+                            "
+                        />
+                    </svg>
+
                 </div>
 
-                <h3>
+
+                <h3
+                    class="
+                        text-2xl
+                        font-bold
+                        tracking-tight
+                    "
+                >
                     Automatización
                 </h3>
 
-                <p>
-                    Integraciones, APIs, mensajería y automatización
-                    de procesos para reducir tareas manuales.
+
+                <p
+                    class="
+                        mt-3
+                        max-w-lg
+                        leading-7
+                        text-gama-muted
+                    "
+                >
+                    Integraciones, APIs, mensajería y
+                    automatización de procesos para
+                    reducir tareas manuales.
                 </p>
 
             </article>
+
 
         </div>
 
@@ -1235,76 +1239,295 @@
 </section>
 
 
-<!-- PRODUCTS -->
-<section id="productos">
 
-    <div class="container">
+<!-- =========================================================
+     PRODUCTOS
+========================================================= -->
 
-        <div class="section-header">
+<section
+    id="productos"
+    class="
+        py-24
+        sm:py-28
+    "
+>
 
-            <div class="section-label">
+    <div
+        class="
+            mx-auto
+            max-w-7xl
+            px-5
+            sm:px-6
+            lg:px-8
+        "
+    >
+
+        <div
+            class="
+                mb-14
+                max-w-2xl
+            "
+        >
+
+            <span
+                class="
+                    text-xs
+                    font-extrabold
+                    uppercase
+                    tracking-[2px]
+                    text-gama-blue
+                "
+            >
                 Productos
-            </div>
+            </span>
 
-            <h2>
-                Software que construimos para resolver problemas reales.
+            <h2
+                class="
+                    mt-3
+                    text-4xl
+                    font-extrabold
+                    leading-tight
+                    tracking-[-2px]
+                    sm:text-5xl
+                "
+            >
+                Software que construimos para resolver
+                problemas reales.
             </h2>
 
         </div>
 
 
-        <div class="products-grid">
+        <div
+            class="
+                grid
+                gap-6
+                lg:grid-cols-2
+            "
+        >
 
-            <article class="product-card dark">
 
-                <div class="product-circle"></div>
+            <!-- WisperCloud -->
+            <article
+                class="
+                    group
+                    relative
+                    min-h-[420px]
+                    overflow-hidden
+                    rounded-[32px]
+                    bg-gradient-to-br
+                    from-gama-navy
+                    to-[#0b336e]
+                    p-8
+                    text-white
+                    sm:p-10
+                "
+            >
 
-                <span class="product-pill">
+                <div
+                    class="
+                        absolute
+                        -right-24
+                        -top-24
+                        h-64
+                        w-64
+                        rounded-full
+                        border
+                        border-white/10
+                    "
+                ></div>
+
+                <div
+                    class="
+                        absolute
+                        -right-10
+                        -top-10
+                        h-36
+                        w-36
+                        rounded-full
+                        bg-gama-blue/10
+                        blur-2xl
+                    "
+                ></div>
+
+
+                <span
+                    class="
+                        inline-flex
+                        rounded-full
+                        border
+                        border-white/20
+                        px-3
+                        py-2
+                        text-[11px]
+                        font-bold
+                        uppercase
+                        tracking-[1.5px]
+                    "
+                >
                     ISP Management
                 </span>
 
-                <h3>
-                    WisperCloud
-                </h3>
 
-                <p>
-                    Plataforma inteligente para la administración
-                    de clientes de proveedores de Internet.
-                </p>
+                <div
+                    class="
+                        absolute
+                        bottom-9
+                        left-8
+                        right-8
+                        sm:left-10
+                        sm:right-10
+                    "
+                >
 
-                <a href="https://wispercloud.com"
-                   class="product-link">
+                    <h3
+                        class="
+                            text-4xl
+                            font-extrabold
+                            tracking-[-2px]
+                            sm:text-5xl
+                        "
+                    >
+                        Wisper<span class="text-gama-cyan">Cloud</span>
+                    </h3>
 
-                    Conocer WisperCloud →
+                    <p
+                        class="
+                            mt-4
+                            max-w-md
+                            leading-7
+                            text-white/65
+                        "
+                    >
+                        Plataforma inteligente para la
+                        administración de clientes de
+                        proveedores de Internet.
+                    </p>
 
-                </a>
+
+                    <a
+                        href="https://wispercloud.com"
+                        target="_blank"
+                        class="
+                            mt-7
+                            inline-flex
+                            items-center
+                            gap-2
+                            text-sm
+                            font-bold
+                            text-white
+                        "
+                    >
+                        Conocer WisperCloud
+                        <span>→</span>
+                    </a>
+
+                </div>
 
             </article>
 
 
-            <article class="product-card blue">
 
-                <div class="product-circle"></div>
+            <!-- Z-nix -->
+            <article
+                class="
+                    relative
+                    min-h-[420px]
+                    overflow-hidden
+                    rounded-[32px]
+                    bg-gradient-to-br
+                    from-gama-blue
+                    to-gama-cyan
+                    p-8
+                    text-white
+                    sm:p-10
+                "
+            >
 
-                <span class="product-pill">
+                <div
+                    class="
+                        absolute
+                        -right-24
+                        -top-24
+                        h-64
+                        w-64
+                        rounded-full
+                        border
+                        border-white/20
+                    "
+                ></div>
+
+
+                <span
+                    class="
+                        inline-flex
+                        rounded-full
+                        border
+                        border-white/25
+                        px-3
+                        py-2
+                        text-[11px]
+                        font-bold
+                        uppercase
+                        tracking-[1.5px]
+                    "
+                >
                     Point of Sale
                 </span>
 
-                <h3>
-                    Z-nix
-                </h3>
 
-                <p>
-                    Punto de venta moderno para administrar ventas,
-                    productos, clientes, sucursales y operaciones.
-                </p>
+                <div
+                    class="
+                        absolute
+                        bottom-9
+                        left-8
+                        right-8
+                        sm:left-10
+                        sm:right-10
+                    "
+                >
 
-                <a href="#"
-                   class="product-link">
+                    <h3
+                        class="
+                            text-4xl
+                            font-extrabold
+                            tracking-[-2px]
+                            sm:text-5xl
+                        "
+                    >
+                        Z-nix
+                    </h3>
 
-                    Conocer Z-nix →
+                    <p
+                        class="
+                            mt-4
+                            max-w-md
+                            leading-7
+                            text-white/80
+                        "
+                    >
+                        Punto de venta moderno para
+                        administrar ventas, productos,
+                        clientes, sucursales y operaciones.
+                    </p>
 
-                </a>
+
+                    <a
+                        href="#"
+                        class="
+                            mt-7
+                            inline-flex
+                            items-center
+                            gap-2
+                            text-sm
+                            font-bold
+                        "
+                    >
+                        Conocer Z-nix
+                        <span>→</span>
+                    </a>
+
+                </div>
 
             </article>
 
@@ -1315,61 +1538,277 @@
 </section>
 
 
-<!-- ABOUT -->
-<section id="nosotros">
 
-    <div class="container about-layout">
+<!-- =========================================================
+     SOBRE DIGITALGAMA
+========================================================= -->
 
-        <div class="about-box">
+<section
+    id="nosotros"
+    class="
+        py-24
+        sm:py-28
+    "
+>
 
-            <div class="about-mark">
+    <div
+        class="
+            mx-auto
+            grid
+            max-w-7xl
+            items-center
+            gap-14
+            px-5
+            sm:px-6
+            lg:grid-cols-2
+            lg:gap-24
+            lg:px-8
+        "
+    >
+
+        <!-- Arte -->
+        <div
+            class="
+                relative
+                min-h-[400px]
+                overflow-hidden
+                rounded-[34px]
+                bg-gradient-to-br
+                from-gama-navy
+                to-[#0c3873]
+            "
+        >
+
+            <div
+                class="
+                    absolute
+                    left-1/2
+                    top-1/2
+                    h-72
+                    w-72
+                    -translate-x-1/2
+                    -translate-y-1/2
+                    rounded-full
+                    border
+                    border-white/10
+                "
+            ></div>
+
+
+            <div
+                class="
+                    absolute
+                    bottom-[-70px]
+                    right-[-30px]
+                    h-48
+                    w-48
+                    rounded-full
+                    bg-gama-blue
+                    blur-sm
+                    shadow-[0_0_100px_rgba(8,124,255,.7)]
+                "
+            ></div>
+
+
+            <div
+                class="
+                    absolute
+                    inset-0
+                    flex
+                    items-center
+                    justify-center
+                    text-[90px]
+                    font-black
+                    tracking-[-18px]
+                    text-white
+                "
+            >
                 <span>D</span>
-                <span>G</span>
+
+                <span class="text-gama-cyan">
+                    G
+                </span>
             </div>
 
         </div>
 
 
-        <div class="about-content">
+        <!-- Texto -->
+        <div>
 
-            <div class="section-label">
+            <span
+                class="
+                    text-xs
+                    font-extrabold
+                    uppercase
+                    tracking-[2px]
+                    text-gama-blue
+                "
+            >
                 DigitalGama
-            </div>
+            </span>
 
-            <h2>
+
+            <h2
+                class="
+                    mt-3
+                    text-4xl
+                    font-extrabold
+                    leading-tight
+                    tracking-[-2px]
+                    sm:text-5xl
+                "
+            >
                 Software, infraestructura y conectividad.
             </h2>
 
-            <p>
-                DigitalGama nace para reunir diferentes soluciones
-                tecnológicas bajo un mismo ecosistema.
+
+            <p
+                class="
+                    mt-6
+                    text-lg
+                    leading-8
+                    text-gama-muted
+                "
+            >
+                DigitalGama nace para reunir diferentes
+                soluciones tecnológicas bajo un mismo
+                ecosistema.
             </p>
 
-            <p>
-                Desarrollamos productos propios y soluciones para empresas,
-                combinando software, servidores, redes y automatización.
+
+            <p
+                class="
+                    mt-4
+                    leading-7
+                    text-gama-muted
+                "
+            >
+                Desarrollamos productos propios y soluciones
+                para empresas, combinando software,
+                servidores, redes y automatización.
             </p>
 
-            <div class="stats">
 
-                <div class="stat">
-                    <strong>SaaS</strong>
-                    <span>Productos propios</span>
+            <div
+                class="
+                    mt-8
+                    grid
+                    gap-4
+                    sm:grid-cols-2
+                "
+            >
+
+                <div
+                    class="
+                        rounded-2xl
+                        border
+                        border-gama-border
+                        p-5
+                    "
+                >
+                    <strong
+                        class="
+                            block
+                            text-2xl
+                            text-gama-navy
+                        "
+                    >
+                        SaaS
+                    </strong>
+
+                    <span
+                        class="
+                            text-sm
+                            text-gama-muted
+                        "
+                    >
+                        Productos propios
+                    </span>
                 </div>
 
-                <div class="stat">
-                    <strong>Cloud</strong>
-                    <span>Infraestructura</span>
+
+                <div
+                    class="
+                        rounded-2xl
+                        border
+                        border-gama-border
+                        p-5
+                    "
+                >
+                    <strong
+                        class="
+                            block
+                            text-2xl
+                        "
+                    >
+                        Cloud
+                    </strong>
+
+                    <span
+                        class="
+                            text-sm
+                            text-gama-muted
+                        "
+                    >
+                        Infraestructura
+                    </span>
                 </div>
 
-                <div class="stat">
-                    <strong>Networks</strong>
-                    <span>VPN & MikroTik</span>
+
+                <div
+                    class="
+                        rounded-2xl
+                        border
+                        border-gama-border
+                        p-5
+                    "
+                >
+                    <strong
+                        class="
+                            block
+                            text-2xl
+                        "
+                    >
+                        Networks
+                    </strong>
+
+                    <span
+                        class="
+                            text-sm
+                            text-gama-muted
+                        "
+                    >
+                        VPN & MikroTik
+                    </span>
                 </div>
 
-                <div class="stat">
-                    <strong>Custom</strong>
-                    <span>Software a medida</span>
+
+                <div
+                    class="
+                        rounded-2xl
+                        border
+                        border-gama-border
+                        p-5
+                    "
+                >
+                    <strong
+                        class="
+                            block
+                            text-2xl
+                        "
+                    >
+                        Custom
+                    </strong>
+
+                    <span
+                        class="
+                            text-sm
+                            text-gama-muted
+                        "
+                    >
+                        Software a medida
+                    </span>
                 </div>
 
             </div>
@@ -1381,30 +1820,145 @@
 </section>
 
 
-<!-- CTA -->
-<section class="cta-section" id="contacto">
 
-    <div class="container">
+<!-- =========================================================
+     CTA
+========================================================= -->
 
-        <div class="cta">
+<section
+    id="contacto"
+    class="
+        pb-24
+        pt-8
+        sm:pb-28
+    "
+>
 
-            <div class="cta-content">
+    <div
+        class="
+            mx-auto
+            max-w-7xl
+            px-5
+            sm:px-6
+            lg:px-8
+        "
+    >
 
-                <h2>
+        <div
+            class="
+                relative
+                overflow-hidden
+                rounded-[36px]
+                bg-gradient-to-br
+                from-[#04142f]
+                to-[#082f66]
+                px-7
+                py-16
+                text-white
+                sm:px-12
+                lg:px-16
+                lg:py-20
+            "
+        >
+
+            <div
+                class="
+                    absolute
+                    -right-20
+                    -top-32
+                    h-96
+                    w-96
+                    rounded-full
+                    border
+                    border-white/10
+                "
+            ></div>
+
+
+            <div
+                class="
+                    absolute
+                    right-0
+                    top-0
+                    h-full
+                    w-1/2
+                    bg-gama-blue/10
+                    blur-3xl
+                "
+            ></div>
+
+
+            <div
+                class="
+                    relative
+                    z-10
+                    max-w-2xl
+                "
+            >
+
+                <span
+                    class="
+                        text-sm
+                        font-bold
+                        text-gama-cyan
+                    "
+                >
+                    ¿Tienes una idea?
+                </span>
+
+
+                <h2
+                    class="
+                        mt-4
+                        text-4xl
+                        font-extrabold
+                        leading-none
+                        tracking-[-3px]
+                        sm:text-5xl
+                        lg:text-6xl
+                    "
+                >
                     Construyamos algo.
                 </h2>
 
-                <p>
-                    Cuéntanos qué necesitas y diseñaremos una solución
-                    adaptada a tu proyecto.
+
+                <p
+                    class="
+                        mt-5
+                        max-w-xl
+                        text-lg
+                        leading-8
+                        text-white/65
+                    "
+                >
+                    Cuéntanos qué necesitas y diseñaremos una
+                    solución adaptada a tu proyecto.
                 </p>
+
 
                 <a
                     href="https://wa.me/5210000000000"
-                    class="button"
                     target="_blank"
+                    class="
+                        mt-8
+                        inline-flex
+                        min-h-[52px]
+                        items-center
+                        rounded-2xl
+                        bg-white
+                        px-6
+                        text-sm
+                        font-bold
+                        text-gama-navy
+                        transition
+                        hover:-translate-y-1
+                    "
                 >
-                    Hablar por WhatsApp →
+                    Hablar por WhatsApp
+
+                    <span class="ml-2">
+                        →
+                    </span>
                 </a>
 
             </div>
@@ -1416,55 +1970,185 @@
 </section>
 
 
-<!-- FOOTER -->
-<footer>
 
-    <div class="container">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-        <div class="footer-top">
+<footer
+    class="
+        border-t
+        border-gama-border
+        py-14
+    "
+>
 
-            <div>
+    <div
+        class="
+            mx-auto
+            max-w-7xl
+            px-5
+            sm:px-6
+            lg:px-8
+        "
+    >
 
-                <a href="#" class="brand">
+        <div
+            class="
+                flex
+                flex-col
+                justify-between
+                gap-12
+                md:flex-row
+            "
+        >
 
-                    <div class="brand-icon">
+            <!-- Marca -->
+            <div
+                class="
+                    max-w-md
+                "
+            >
+
+                <a
+                    href="#"
+                    class="
+                        flex
+                        items-center
+                        gap-3
+                    "
+                >
+
+                    <div
+                        class="
+                            grid
+                            h-10
+                            w-10
+                            place-items-center
+                            rounded-xl
+                            bg-gradient-to-br
+                            from-gama-navy
+                            to-gama-blue
+                            text-xs
+                            font-black
+                            tracking-[-2px]
+                            text-white
+                        "
+                    >
                         DG
                     </div>
 
-                    <div>
-                        <span>Digital</span><span class="gama">Gama</span>
+
+                    <div
+                        class="
+                            text-[22px]
+                            font-extrabold
+                            tracking-[-1px]
+                        "
+                    >
+                        Digital<span class="text-gama-blue">Gama</span>
                     </div>
 
                 </a>
 
-                <p class="footer-description">
-                    Software, cloud e infraestructura para construir
-                    mejores soluciones digitales.
+
+                <p
+                    class="
+                        mt-4
+                        leading-7
+                        text-gama-muted
+                    "
+                >
+                    Software, cloud e infraestructura para
+                    construir mejores soluciones digitales.
                 </p>
 
             </div>
 
 
-            <div class="footer-links">
+            <!-- Links -->
+            <div
+                class="
+                    grid
+                    grid-cols-2
+                    gap-10
+                    text-sm
+                    sm:grid-cols-3
+                    sm:gap-16
+                "
+            >
 
-                <div class="footer-column">
-                    <strong>Empresa</strong>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#servicios">Servicios</a>
-                    <a href="#contacto">Contacto</a>
+                <div
+                    class="
+                        flex
+                        flex-col
+                        gap-3
+                        text-gama-muted
+                    "
+                >
+                    <strong class="text-gama-navy">
+                        Empresa
+                    </strong>
+
+                    <a href="#nosotros">
+                        Nosotros
+                    </a>
+
+                    <a href="#servicios">
+                        Servicios
+                    </a>
+
+                    <a href="#contacto">
+                        Contacto
+                    </a>
                 </div>
 
-                <div class="footer-column">
-                    <strong>Productos</strong>
-                    <a href="https://wispercloud.com">WisperCloud</a>
-                    <a href="#">Z-nix</a>
+
+                <div
+                    class="
+                        flex
+                        flex-col
+                        gap-3
+                        text-gama-muted
+                    "
+                >
+                    <strong class="text-gama-navy">
+                        Productos
+                    </strong>
+
+                    <a href="https://wispercloud.com">
+                        WisperCloud
+                    </a>
+
+                    <a href="#">
+                        Z-nix
+                    </a>
                 </div>
 
-                <div class="footer-column">
-                    <strong>Servicios</strong>
-                    <a href="#">Software</a>
-                    <a href="#">Cloud</a>
-                    <a href="#">Networks</a>
+
+                <div
+                    class="
+                        flex
+                        flex-col
+                        gap-3
+                        text-gama-muted
+                    "
+                >
+                    <strong class="text-gama-navy">
+                        Servicios
+                    </strong>
+
+                    <a href="#">
+                        Software
+                    </a>
+
+                    <a href="#">
+                        Cloud
+                    </a>
+
+                    <a href="#">
+                        Networks
+                    </a>
                 </div>
 
             </div>
@@ -1472,10 +2156,25 @@
         </div>
 
 
-        <div class="footer-bottom">
+        <div
+            class="
+                mt-12
+                flex
+                flex-col
+                justify-between
+                gap-3
+                border-t
+                border-gama-border
+                pt-6
+                text-xs
+                text-slate-400
+                sm:flex-row
+            "
+        >
 
             <span>
-                © 2026 DigitalGama. Todos los derechos reservados.
+                © 2026 DigitalGama.
+                Todos los derechos reservados.
             </span>
 
             <span>
@@ -1487,6 +2186,33 @@
     </div>
 
 </footer>
+
+
+
+<!-- =========================================================
+     JS MENÚ MÓVIL
+========================================================= -->
+
+<script>
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+
+    document
+        .querySelectorAll("#mobileMenu a")
+        .forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+            });
+        });
+</script>
+
 
 </body>
 </html>
